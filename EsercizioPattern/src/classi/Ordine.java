@@ -34,8 +34,8 @@ public class Ordine {
 
     @Override
     public String toString() {
-        return "Ordine #" + id +
-                " | " + pizza.getDescrizione() +
+        return "ID Ordine " + id + " | "
+                + pizza.getDescrizione() +
                 " | Prezzo: " + pizza.getPrezzo() +
                 " | Stato: " + stato;
     }
