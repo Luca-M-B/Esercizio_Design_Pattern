@@ -4,16 +4,24 @@ import pizze_base.Pizza;
 
 public class Ordine {
 
-    private static int counter = 0;
-
     private int id;
     private Pizza pizza;
-    private String stato; // temporaneo (in attesa dell'enum condiviso)
+    private String stato; // TODO temporaneo (in attesa dell'enum condiviso)
+    private double prezzoTotale;
 
+    // Costruttore per nuovo ordine (senza ID DB)
     public Ordine(Pizza pizza) {
-        this.id = ++counter;
         this.pizza = pizza;
         this.stato = "CREATO";
+        this.prezzoTotale = pizza.getPrezzo();
+    }
+
+    // Costruttore per ordine già esistente nel DB
+    public Ordine(int id, Pizza pizza, String stato, double prezzoTotale) {
+        this.id = id;
+        this.pizza = pizza;
+        this.stato = stato;
+        this.prezzoTotale = prezzoTotale;
     }
 
     public int getId() {
@@ -36,7 +44,7 @@ public class Ordine {
     public String toString() {
         return "ID Ordine " + id + " | "
                 + pizza.getDescrizione() +
-                " | Prezzo: " + pizza.getPrezzo() +
+                " | Prezzo: " + prezzoTotale +
                 " | Stato: " + stato;
     }
 

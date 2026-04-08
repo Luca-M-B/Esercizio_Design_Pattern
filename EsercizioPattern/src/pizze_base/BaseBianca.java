@@ -1,7 +1,6 @@
 package pizze_base;
 
 public class BaseBianca implements Pizza {
-
     @Override
     public String getDescrizione() {
         return "Pizza base bianca";
