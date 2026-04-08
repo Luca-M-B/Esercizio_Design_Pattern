@@ -4,7 +4,6 @@ import pizze_base.*;
 import decorators.*;
 
 import java.sql.*;
-import java.util.*;
 
 public class PizzaDAO {
 
@@ -20,7 +19,6 @@ public class PizzaDAO {
         if (!rsBase.next()) return null;
 
         String nomeBase = rsBase.getString("nome");
-        double prezzoBase = rsBase.getDouble("prezzo_base");
 
         // Crea la pizza base
         Pizza pizza;

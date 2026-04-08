@@ -7,6 +7,7 @@ import decorators.*;
 import pizze_base.*;
 import singleton.GestoreOrdini;
 import observers.*;
+import observers.Cucina;
 
 public class Main {
 
