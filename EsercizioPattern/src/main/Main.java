@@ -55,8 +55,12 @@ public class Main {
                 - Modifica pizza
                 - Rimuovi pizza
                 - Torna al menu admin
-            - Menu ordini
-            - Torna al main menu
+            - Menu ordini:
+                - Visualizza ordini
+                - Cerca ordine
+                - Modifica ordine
+                - Elimina ordine
+                - Torna al main menu
         */
         Ordine ordine = new Ordine(pizza);
         // aspetto per chiamare i metodi aggiungiObserver
