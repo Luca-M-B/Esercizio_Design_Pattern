@@ -1,0 +1,77 @@
+-- =========================
+-- CREAZIONE DATABASE
+-- =========================
+CREATE DATABASE IF NOT EXISTS pizzeria_itconsulting;
+USE pizzeria_itconsulting;
+
+-- =========================
+-- TABELLA PIZZA BASE
+-- =========================
+CREATE TABLE pizza_base (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    descrizione TEXT,
+    prezzo_base DECIMAL(5,2) NOT NULL
+);
+
+-- =========================
+-- TABELLA INGREDIENTI (Necessaria per la relazione fra pizza ed ingredienti)
+-- =========================
+CREATE TABLE ingrediente (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    prezzo_extra DECIMAL(5,2) NOT NULL
+);
+
+-- =========================
+-- TABELLA PIZZA (ISTANZA)
+-- =========================
+CREATE TABLE pizza (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_pizza_base INT NOT NULL,
+    prezzo_totale DECIMAL(6,2),
+
+    FOREIGN KEY (id_pizza_base) REFERENCES pizza_base(id)
+);
+
+-- =========================
+-- RELAZIONE PIZZA-INGREDIENTI
+-- =========================
+CREATE TABLE pizza_ingrediente (
+    id_pizza INT,
+    id_ingrediente INT,
+    PRIMARY KEY (id_pizza, id_ingrediente),
+
+    FOREIGN KEY (id_pizza) REFERENCES pizza(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_ingrediente) REFERENCES ingrediente(id)
+);
+
+-- =========================
+-- TABELLA ORDINE
+-- =========================
+CREATE TABLE ordine (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_pizza INT NOT NULL,
+    stato VARCHAR(30) NOT NULL,
+    data_creazione TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (id_pizza) REFERENCES pizza(id) ON DELETE CASCADE
+);
+
+-- =========================
+-- DATI DI TEST
+-- =========================
+
+-- PIZZE BASE
+INSERT INTO pizza_base (nome, descrizione, prezzo_base) VALUES
+('Margherita', 'Pomodoro e mozzarella', 5.00),
+('BaseRossa', 'Solo pomodoro', 4.00),
+('BaseBianca', 'Solo mozzarella', 4.50);
+
+-- INGREDIENTI
+INSERT INTO ingrediente (id, nome, prezzo_extra) VALUES
+(1, 'Mozzarella', 1.00),
+(2, 'Funghi', 1.50),
+(3, 'Salame', 2.00),
+(4, 'SalamePiccante', 2.50),
+(5, 'ProsciuttoCrudo', 2.00);

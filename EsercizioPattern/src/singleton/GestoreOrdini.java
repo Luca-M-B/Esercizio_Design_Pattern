@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import classi.Ordine;
 import observers.Observer;
+import service.OrderDAO;
 
 public class GestoreOrdini {
 
@@ -45,17 +46,21 @@ public class GestoreOrdini {
         observers.add(o);
     }
 
-    public void notifyObservers(String stato) {
-        for (Observer o : observers) {
-            o.aggiorna(stato);
+    public void notifyObservers(Ordine ordine) {
+        for(Observer o : observers) {
+            o.aggiorna(ordine);
         }
     }
 
-    public void aggiornaStato(int id, String nuovoStato) {
-        Ordine ordine = getOrdineById(id);
-        if (ordine != null) {
+    // Aggiorna stato ordine e notifica osservatori
+    public void aggiornaStatoOrdine(int id, String nuovoStato) throws Exception {
+        OrderDAO orderDAO = new OrderDAO();
+
+        Ordine ordine = orderDAO.getOrdine(id);
+        if(ordine != null) {
             ordine.setStato(nuovoStato);
-            notifyObservers(nuovoStato);
+            orderDAO.aggiornaStato(id, nuovoStato);
+            notifyObservers(ordine);
         }
     }
 }

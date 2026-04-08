@@ -1,11 +1,10 @@
 package observers;
 
+import classi.Ordine;
+
 public class Cucina implements Observer {
-
-    public void aggiorna(String stato) {
-        if (stato.equals("IN PREPARAZIONE")) {
-            System.out.println("preparazione iniziata");
-        }
+    @Override
+    public void aggiorna(Ordine ordine) {
+        System.out.println("[CUCINA] Ordine #" + ordine.getId() + " aggiornato a stato: " + ordine.getStato());
     }
-
 }

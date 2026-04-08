@@ -16,7 +16,7 @@ public class OrderDAO {
         Connection c = DBConnection.getInstance().getConnection();
 
         PreparedStatement ps = c.prepareStatement(
-                "INSERT INTO ordine(id_pizza, stato) VALUES (?, 'IN_PREPARAZIONE')"
+                "INSERT INTO ordine(id_pizza, stato) VALUES (?, 'CREATO')"
         );
         ps.setInt(1, pizzaId);
         ps.executeUpdate();

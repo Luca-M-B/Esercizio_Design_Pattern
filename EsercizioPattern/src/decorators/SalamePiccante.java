@@ -4,8 +4,6 @@ import pizze_base.Pizza;
 
 public class SalamePiccante extends PizzaDecorator {
 
-    private static final double PREZZO = 2.50;
-
     public SalamePiccante(Pizza pizza) {
         super(pizza);
     }

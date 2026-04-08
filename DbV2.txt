@@ -1,0 +1,89 @@
+-- =========================
+-- DATABASE
+-- =========================
+CREATE DATABASE IF NOT EXISTS pizzeria_itconsulting;
+USE pizzeria_itconsulting;
+
+-- =========================
+-- PIZZA BASE
+-- =========================
+CREATE TABLE pizza_base (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    descrizione TEXT,
+    prezzo_base DECIMAL(5,2) NOT NULL
+);
+
+-- =========================
+-- PIZZA (con ingredienti salvati come stringa)
+-- =========================
+CREATE TABLE pizza (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_pizza_base INT NOT NULL,
+    ingredienti TEXT, -- ← STRINGA tipo: "Mozzarella,Funghi,Salame"
+    prezzo_totale DECIMAL(6,2),
+
+    FOREIGN KEY (id_pizza_base) REFERENCES pizza_base(id)
+);
+
+-- =========================
+-- ORDINE
+-- =========================
+CREATE TABLE ordine (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_pizza INT NOT NULL,
+    stato VARCHAR(30) NOT NULL,
+    data_creazione TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (id_pizza) REFERENCES pizza(id) ON DELETE CASCADE
+);
+
+-- =========================
+-- DATI TEST
+-- =========================
+INSERT INTO pizza_base (nome, descrizione, prezzo_base) VALUES
+('Margherita', 'Pomodoro e mozzarella', 5.00),
+('BaseRossa', 'Solo pomodoro', 4.00),
+('BaseBianca', 'Solo mozzarella', 4.50);
+
+
+
+
+
+
+
+-- Andrebbe però modificato anche il backend in parte
+Nel PizzaDAO, al posto di salvare nella tabella pizza_ingredienti:
+String ingredientiString = String.join(",", ingredienti);
+
+PreparedStatement ps = c.prepareStatement(
+    "INSERT INTO pizza(id_pizza_base, ingredienti, prezzo_totale) VALUES (?, ?, ?)"
+);
+ps.setInt(1, idBase);
+ps.setString(2, ingredientiString);
+ps.setDouble(3, prezzoTotale);
+ps.executeUpdate();
+
+
+Ed andrebbe modificata anche la lettura, come in getPizzaById:
+String ingredientiStr = rs.getString("ingredienti");
+
+if (ingredientiStr != null && !ingredientiStr.isEmpty()) {
+    String[] ingredienti = ingredientiStr.split(",");
+
+    for(String ing : ingredienti) {
+        pizza = switch(ing) {
+            case "Mozzarella" -> new Mozzarella(pizza);
+            case "Funghi" -> new Funghi(pizza);
+            case "Salame" -> new Salame(pizza);
+            case "SalamePiccante" -> new SalamePiccante(pizza);
+            case "ProsciuttoCrudo" -> new ProsciuttoCrudo(pizza);
+            default -> pizza;
+        };
+    }
+}
+
+
+
+Però, questa soluzione, per quanto più veloce non rispetta la normalizzazione delle tabelle, e risulta anche meno scalabile.
+Di conseguenza, consigliere di non modificare la struttura di questo progetto che, al momento, dovrebbe essere semifunzionante, quanto di creare una copia/progetto parallelo

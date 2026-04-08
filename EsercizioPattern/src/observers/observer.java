@@ -1,5 +1,7 @@
 package observers;
 
+import classi.Ordine;
+
 public interface Observer {
-    void aggiorna(String stato);
+    void aggiorna(Ordine ordine);
 }

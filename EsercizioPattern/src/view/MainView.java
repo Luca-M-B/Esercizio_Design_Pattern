@@ -34,9 +34,10 @@ public class MainView {
         System.out.println("1) Mozzarella");
         System.out.println("2) Funghi");
         System.out.println("3) Salame");
-        System.out.println("4) Prosciutto");
-        System.out.println("5) Fine aggiunta ingredienti");
-        System.out.println("6) Annulla ordine");
+        System.out.println("4) Salame Piccante");
+        System.out.println("5) Prosciutto Crudo");
+        System.out.println("9) Fine aggiunta ingredienti");
+        System.out.println("0) Annulla ordine");
         System.out.println("============================");
     }
 }

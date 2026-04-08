@@ -9,6 +9,14 @@ public class Ordine {
     private String stato; // TODO temporaneo (in attesa dell'enum condiviso)
     private double prezzoTotale;
 
+    public double getPrezzoTotale() {
+        return prezzoTotale;
+    }
+
+    public void setPrezzoTotale(double prezzoTotale) {
+        this.prezzoTotale = prezzoTotale;
+    }
+
     // Costruttore per nuovo ordine (senza ID DB)
     public Ordine(Pizza pizza) {
         this.pizza = pizza;
