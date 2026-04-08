@@ -7,6 +7,7 @@ import pizze_base.Pizza;
 
 public class Main {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         Pizza pizza = null;
 
@@ -42,6 +43,8 @@ public class Main {
          * ordine.setStato("IN COTTURA");
          * ordine.setStato("PRONTO");
          */
+
+        scanner.close();
     }
 
 }
