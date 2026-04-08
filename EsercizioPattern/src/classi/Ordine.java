@@ -39,4 +39,9 @@ public class Ordine {
                 " | Prezzo: " + pizza.getPrezzo() +
                 " | Stato: " + stato;
     }
+
+    public void setPizza(Pizza pizza) {
+        this.pizza = pizza;
+    }
+
 }
