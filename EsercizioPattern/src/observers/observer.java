@@ -1,5 +1,5 @@
 package observers;
 
-public class observer {
-
+public interface Observer {
+    void aggiorna(String stato);
 }
