@@ -2,13 +2,13 @@ package singleton;
 
 import java.util.ArrayList;
 
-import pizze_base.Pizza;
+import classi.Ordine;
 
 public class GestoreOrdini {
 
     private static GestoreOrdini istance;
 
-    private ArrayList<Pizza> ordini;
+    private ArrayList<Ordine> ordini;
 
     private GestoreOrdini() {
         ordini = new ArrayList<>();
@@ -21,11 +21,11 @@ public class GestoreOrdini {
         return istance;
     }
 
-    public void aggiungiOrdine(Pizza pizza) {
-        ordini.add(pizza);
+    public void aggiungiOrdine(Ordine ordine) {
+        ordini.add(ordine);
     }
 
-    public ArrayList<Pizza> getOrdini() {
+    public ArrayList<Ordine> getOrdini() {
         return ordini;
     }
 
