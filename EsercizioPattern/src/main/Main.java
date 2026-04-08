@@ -44,27 +44,35 @@ public class Main {
          * ordine.setStato("PRONTO");
          */
 
-        /*
-         * Main:
-         * 
-         * Loop con menu:
-         * - Ordina pizza
-         * - Traccia ordine
-         * - Modifica ordine
-         * - Elimina ordine
-         * - Esci
-         * 
-         * - Sotto menu per admin:
-         * - Menu pizze:
-         * - Aggiungi pizza
-         * - Visualizza pizze
-         * - Cerca pizza
-         * - Modifica pizza
-         * - Rimuovi pizza
-         * - Torna al menu admin
-         * - Menu ordini
-         * - Torna al main menu
-         */
+
+
+
+        /*  
+        Main:
+
+        Loop con menu:
+         - Ordina pizza
+         - Traccia ordine
+         - Modifica ordine
+         - Elimina ordine
+         - Esci
+        
+         - Sotto menu per admin:
+            - Menu pizze:
+                - Aggiungi pizza
+                - Visualizza pizze
+                - Cerca pizza
+                - Modifica pizza
+                - Rimuovi pizza
+                - Torna al menu admin
+            - Menu ordini:
+                - Visualizza ordini
+                - Cerca ordine
+                - Modifica ordine
+                - Elimina ordine
+                - Torna al main menu
+        */
+
         Ordine ordine = new Ordine(pizza);
         // aspetto per chiamare i metodi aggiungiObserver
         /*
