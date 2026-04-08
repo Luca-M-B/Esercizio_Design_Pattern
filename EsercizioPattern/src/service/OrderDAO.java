@@ -8,11 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import classi.Ordine;
+import pizze_base.Pizza;
 
 public class OrderDAO {
     
      public void creaOrdine(int pizzaId) throws Exception {
         Connection c = DBConnection.getInstance().getConnection();
+
         PreparedStatement ps = c.prepareStatement(
                 "INSERT INTO ordine(id_pizza, stato) VALUES (?, 'IN_PREPARAZIONE')"
         );
@@ -22,12 +24,19 @@ public class OrderDAO {
 
     public Ordine getOrdine(int id) throws Exception {
         Connection c = DBConnection.getInstance().getConnection();
+        PizzaDAO pizzaDAO = new PizzaDAO();
+
         PreparedStatement ps = c.prepareStatement("SELECT * FROM ordine WHERE id=?");
         ps.setInt(1, id);
         ResultSet rs = ps.executeQuery();
 
         if (rs.next()) {
-            return new Ordine(rs.getInt("id"), rs.getInt("id_pizza"), rs.getString("stato"));
+            int pizzaId = rs.getInt("id_pizza");
+            Pizza pizza = pizzaDAO.getPizzaById(pizzaId);
+            String stato = rs.getString("stato");
+            double prezzoTotale = rs.getDouble("prezzo_totale");
+
+            return new Ordine(rs.getInt("id"), pizza, stato, prezzoTotale);
         }
         return null;
     }
@@ -50,11 +59,20 @@ public class OrderDAO {
     public List<Ordine> getAll() throws Exception {
         List<Ordine> list = new ArrayList<>();
         Connection c = DBConnection.getInstance().getConnection();
+        PizzaDAO pizzaDAO = new PizzaDAO();
+
         Statement st = c.createStatement();
         ResultSet rs = st.executeQuery("SELECT * FROM ordine");
+
         while (rs.next()) {
-            list.add(new Ordine(rs.getInt("id"), rs.getInt("id_pizza"), rs.getString("stato")));
+            int pizzaId = rs.getInt("id_pizza");
+            Pizza pizza = pizzaDAO.getPizzaById(pizzaId);
+            String stato = rs.getString("stato");
+            double prezzoTotale = rs.getDouble("prezzo_totale");
+
+            list.add(new Ordine(rs.getInt("id"), pizza, stato, prezzoTotale));
         }
+
         return list;
     }
 }
