@@ -1,5 +1,4 @@
 package observers;
-
 public class Consegna implements Observer {
     public void aggiorna(String stato) {
         if (stato.equals("PRONTO")) {
@@ -7,3 +6,4 @@ public class Consegna implements Observer {
         }
     }
 }
+//ciao
