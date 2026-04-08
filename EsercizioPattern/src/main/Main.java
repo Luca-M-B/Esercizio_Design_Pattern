@@ -1,5 +1,8 @@
 package main;
 import java.util.Scanner;
+
+import classi.Ordine;
+import pizze_base.Pizza;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -31,5 +34,30 @@ public class Main {
         ordine.setStato("IN COTTURA");
         ordine.setStato("PRONTO");
  */
+
+
+
+
+        /*  
+        Main:
+
+        Loop con menu:
+         - Ordina pizza
+         - Traccia ordine
+         - Modifica ordine
+         - Elimina ordine
+         - Esci
+        
+         - Sotto menu per admin:
+            - Menu pizze:
+                - Aggiungi pizza
+                - Visualizza pizze
+                - Cerca pizza
+                - Modifica pizza
+                - Rimuovi pizza
+                - Torna al menu admin
+            - Menu ordini
+            - Torna al main menu
+        */
     }
 }

@@ -10,6 +10,10 @@ public abstract class PizzaDecorator implements Pizza {
         this.pizza = pizza;
     }
 
+    protected String getNomeIngrediente() {
+        return this.getClass().getSimpleName();
+    }
+
     @Override
     public String getDescrizione() {
         return pizza.getDescrizione();
