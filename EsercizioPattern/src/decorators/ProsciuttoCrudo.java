@@ -1,5 +1,7 @@
 package decorators;
 
+import pizze_base.Pizza;
+
 public class ProsciuttoCrudo extends PizzaDecorator {
 
     public ProsciuttoCrudo(Pizza pizza) {

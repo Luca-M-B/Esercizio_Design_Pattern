@@ -1,5 +1,7 @@
 package decorators;
 
+import pizze_base.Pizza;
+
 public class SalamePiccante extends PizzaDecorator {
 
     public SalamePiccante(Pizza pizza) {

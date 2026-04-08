@@ -1,6 +1,12 @@
 package decorators;
 
+import pizze_base.Pizza;
+
 public class Mozzarella extends PizzaDecorator {
+
+    private String nome = "Mozzarella";
+
+    private double prezzo = 1.50;
 
     public Mozzarella(Pizza pizza) {
         super(pizza);
@@ -13,7 +19,7 @@ public class Mozzarella extends PizzaDecorator {
 
     @Override
     public double getPrezzo() {
-        return pizza.getPrezzo() + 1.5;
+        return pizza.getPrezzo() + prezzo;
     }
 
 }

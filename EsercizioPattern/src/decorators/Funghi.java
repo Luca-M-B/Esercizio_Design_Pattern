@@ -1,5 +1,7 @@
 package decorators;
 
+import pizze_base.Pizza;
+
 public class Funghi extends PizzaDecorator {
 
     public Funghi(Pizza pizza) {

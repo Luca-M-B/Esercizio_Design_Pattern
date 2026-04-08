@@ -1,4 +1,4 @@
-package decorators;
+package pizze_base;
 
 public class Margherita implements Pizza { // classe concreta margherita
 

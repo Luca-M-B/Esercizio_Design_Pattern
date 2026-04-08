@@ -1,4 +1,4 @@
-package decorators;
+package pizze_base;
 
 public class BaseBianca implements Pizza {
 
@@ -11,4 +11,5 @@ public class BaseBianca implements Pizza {
     public double getPrezzo() {
         return 4.0;
     }
+
 }

@@ -1,4 +1,4 @@
-package decorators;
+package pizze_base;
 
 public class BaseRossa implements Pizza {
 

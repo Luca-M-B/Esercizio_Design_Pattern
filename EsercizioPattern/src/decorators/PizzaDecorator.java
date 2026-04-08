@@ -1,5 +1,7 @@
 package decorators;
 
+import pizze_base.Pizza;
+
 public abstract class PizzaDecorator implements Pizza {
 
     protected Pizza pizza;
